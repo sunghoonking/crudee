@@ -26,6 +26,8 @@ public class Professor {
     @Column(nullable = false)
     private int age;
 
+
+
     public Professor(ProfessorDto professorDto){
         this.name = professorDto.getName();
         this.age = professorDto.getAge();

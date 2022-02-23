@@ -10,8 +10,8 @@ import java.util.List;
 public class StudentDto {
 
     private String name;
-    private String subject;
     private int age;
     private String address;
+    private String subject;
 
 }

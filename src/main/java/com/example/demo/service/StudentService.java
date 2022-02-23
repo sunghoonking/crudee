@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 import com.example.demo.Repository.StudentRepository;
+import com.example.demo.Repository.SubjectRepository;
 import com.example.demo.dto.request.StudentDto;
 import com.example.demo.dto.request.Wrapper;
 import com.example.demo.dto.response.StudentResponseDto;
 import com.example.demo.models.Student;
+import com.example.demo.models.Subject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,20 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final SubjectRepository subjectRepository;
 
 
     @Transactional
     public void setStudentInfo(StudentDto studentDto){
-        Student student = new Student(studentDto);
+
+
+        Subject s = subjectRepository.findBySubject(studentDto.getSubject()).orElseThrow(
+                ()-> new NullPointerException("과목이 없습니다")
+        );
+
+
+        Student student = new Student(studentDto,s);
+
         studentRepository.save(student);
 
     }

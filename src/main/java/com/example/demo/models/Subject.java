@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,16 +25,24 @@ public class Subject {
     private String subject;
 
 
+    @OneToMany(mappedBy = "subject")
+    List<Student> students = new ArrayList<>();
+
+
 
     public Subject(SubjectDto subjectDto){
 
         this.subject = subjectDto.getSubject();
+
     }
 
     public Subject update(SubjectDto subjectDto){
         this.subject = subjectDto.getSubject();
 
         return this;
+    }
+    public Subject(String subject){
+        this.subject = subject;
     }
 
 }

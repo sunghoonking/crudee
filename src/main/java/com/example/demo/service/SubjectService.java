@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -20,11 +21,21 @@ public class SubjectService {
 
     @Transactional
     public String setSubjectInfo(SubjectDto subjectDto){
-        Subject subject = new Subject(subjectDto);
-        subjectRepository.save(subject);
 
-        return "success";
+        String sub = subjectDto.getSubject();
+        String message;
+        Optional<Subject> found = subjectRepository.findBySubject(sub);
+        if(found.isPresent()){
+            message = "이미 있는 학과명 입니다";
+
+        } else {
+            Subject subject = new Subject(sub);
+            subjectRepository.save(subject);
+        }
+        
+        return "false";
     }
+
 
     @Transactional
     public String updateSubject(Long id, SubjectDto subjectDto){

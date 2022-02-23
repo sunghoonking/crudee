@@ -1,10 +1,10 @@
 package com.example.demo.models;
 
 import com.example.demo.dto.request.StudentDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 
@@ -23,26 +23,36 @@ public class Student {
     private String name;
 
     @Column(nullable = false)
-    private String subject;
-
-    @Column(nullable = false)
     private int age;
 
     @Column(nullable = false)
     private String address;
 
-    public Student(StudentDto studentDto){
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "subjectId",nullable = true)
+    private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "professorId",nullable = true)
+    private Professor professor;
+
+
+
+
+
+    public Student(StudentDto studentDto, Subject s){
         this.name = studentDto.getName();
         this.age = studentDto.getAge();
-        this.subject = studentDto.getSubject();
         this.address = studentDto.getAddress();
+        this.subject = s;
+
 
     }
 
     public Student update(StudentDto studentDto){
         this.name = studentDto.getName();
         this.age = studentDto.getAge();
-        this. subject = studentDto.getSubject();
 
         return this;
     }

@@ -18,7 +18,7 @@ public class StudentResponseDto {
     public  StudentResponseDto(Student student){
         this.studentId = student.getId();
         this.name = student.getName();
-        this.subject = student.getSubject();
+
         this.age = student.getAge();
         this.address = student.getAddress();
     }
