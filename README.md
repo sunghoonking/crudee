@@ -18,7 +18,7 @@
 ![image](https://user-images.githubusercontent.com/90130141/155444108-9ead4730-af51-4ac3-a4d1-bb0e05fc506c.png)
 ![image](https://user-images.githubusercontent.com/90130141/155445089-c1a4471d-b739-448c-a1aa-1cd83a2f2f51.png)
 ![image](https://user-images.githubusercontent.com/90130141/155447415-62df1931-66c1-4c61-b247-ace1d426fc9d.png)
-
+![image](https://user-images.githubusercontent.com/90130141/155455998-4fb4fe26-1cef-4de6-ba07-5fdc3b7665fc.png)
 
 > replicationcController 가 파드 개수를 유지 시켜주고
 > 서비스가 로드밸런싱을 통해 분산해준다.
