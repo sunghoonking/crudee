@@ -5,6 +5,7 @@ import com.example.demo.dto.request.StudentDto;
 import com.example.demo.dto.request.Wrapper;
 import com.example.demo.models.Student;
 import com.example.demo.service.StudentService;
+import com.example.demo.utils.PagingResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +27,15 @@ public class StudentController {
 
     }
 
-    @GetMapping("/api/students")
-    public List<Student> getStudents(){
-        return studentRepository.findAll();
+//    @GetMapping("/api/students")
+//    public List<Student> getStudents(){
+//        return studentRepository.findAll();
+//
+//    }
+
+    @GetMapping("/api/students/{curPage}")
+    public PagingResult getStudents(@PathVariable Integer curPage){
+        return studentService.getStudents(curPage);
 
     }
 //    @GetMapping("/api/students")
