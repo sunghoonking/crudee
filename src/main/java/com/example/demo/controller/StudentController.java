@@ -19,7 +19,7 @@ public class StudentController {
     private  final StudentRepository studentRepository;
     private  final StudentService studentService;
 
-
+    // 학생 저장
     @PostMapping("/api/students")
     public void setStudentInfo(@RequestBody StudentDto studentDto){
         studentService.setStudentInfo(studentDto);
@@ -32,7 +32,7 @@ public class StudentController {
 //        return studentRepository.findAll();
 //
 //    }
-
+    // 학생 목록 조회
     @GetMapping("/api/students/{curPage}")
     public PagingResult getStudents(@PathVariable Integer curPage){
         return studentService.getStudents(curPage);
@@ -43,13 +43,13 @@ public class StudentController {
 //        return studentService.getStudents(studentId);
 //
 //    }
-
+    // 학생 목록 변경
     @PutMapping("/api/students/{id}")
     public String updateStudent(@PathVariable Long id, @RequestBody StudentDto studentDto){
         return studentService.update(id,studentDto);
     }
 
-
+    // 학생 목록 삭제
     @DeleteMapping("/api/students")
     public void deleteStudent(@RequestBody Wrapper students){
         studentService.deleteStudents(students);

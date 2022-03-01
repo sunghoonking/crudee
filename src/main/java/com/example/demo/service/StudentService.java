@@ -39,6 +39,7 @@ public class StudentService {
 
     }
 
+    // 페이징
     public PagingResult getStudents(int curPage){
         Pageable pageable = PageRequest.of(curPage-1, BLOCK_PAGE_NUM_COUNT);
         Page<Student> students = studentRepository.findAllByOrderByCreatedAtDesc(pageable);

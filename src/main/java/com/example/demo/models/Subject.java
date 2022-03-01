@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 
 import com.example.demo.dto.request.SubjectDto;
+import com.example.demo.utils.SubjectValidator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,11 +31,6 @@ public class Subject {
 
 
 
-    public Subject(SubjectDto subjectDto){
-
-        this.subject = subjectDto.getSubject();
-
-    }
 
     public Subject update(SubjectDto subjectDto){
         this.subject = subjectDto.getSubject();
@@ -42,7 +38,9 @@ public class Subject {
         return this;
     }
     public Subject(String subject){
+        SubjectValidator.validateCreateSubject(subject);
         this.subject = subject;
     }
+
 
 }
