@@ -37,6 +37,7 @@ public class SubjectService {
     }
 
 
+
     @Transactional
     public String updateSubject(Long id, SubjectDto subjectDto){
         Subject subject = subjectRepository.findById(id).orElseThrow(

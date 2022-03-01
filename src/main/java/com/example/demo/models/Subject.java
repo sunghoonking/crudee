@@ -3,6 +3,7 @@ package com.example.demo.models;
 
 import com.example.demo.dto.request.SubjectDto;
 import com.example.demo.utils.SubjectValidator;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Setter
 @Getter
-@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 
 public class Subject {
@@ -29,7 +30,13 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     List<Student> students = new ArrayList<>();
 
+    public Subject(SubjectDto subjectDto) {
 
+    }
+
+    public Subject() {
+
+    }
 
 
     public Subject update(SubjectDto subjectDto){
@@ -37,6 +44,7 @@ public class Subject {
 
         return this;
     }
+
     public Subject(String subject){
         SubjectValidator.validateCreateSubject(subject);
         this.subject = subject;
